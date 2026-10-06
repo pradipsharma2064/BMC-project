@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMC Academia - RemNote-Style Study & AI Learning Platform</title>
+    <meta name="description" content="BMC Academia is an interactive learning platform for Tribhuvan University Butwal Multiple Campus students. Master your semester syllabus with RemNote hierarchical notes, spaced-repetition flashcards, TU past questions, and an AI tutor.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="https://bumc.tu.edu.np/assets/logo.png" type="image/png">
+</head>
+<body>
+
+    <!-- ======================================================================
+         TOP GO-TO NAVIGATION BAR
+         Logo | Home | Faculties (Dropdown) | Self Upload Studio | About | Contact
+         ====================================================================== -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <!-- Left: Logo & Brand -->
+            <a href="#home" class="brand-wrapper">
+                <img src="https://bumc.tu.edu.np/assets/logo.png" alt="BMC Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('brand-fallback').style.display='flex';">
+                <div id="brand-fallback" class="brand-fallback-icon" style="display: none;">TU</div>
+                <div class="brand-text">
+                    <span class="brand-title">BMC Academia</span>
+                    <span class="brand-sub">Tribhuvan University • Butwal</span>
+                </div>
+            </a>
+
+            <!-- Center/Right: Go To Tab Bar Links -->
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active" data-route="home">
+                            <span>🏠</span> Home
+                        </a>
+                    </li>
+
+                    <!-- Faculties Dropdown -->
+                    <li class="nav-item dropdown-trigger">
+                        <a href="#faculty/csit" class="nav-link" data-route="faculty">
+                            <span>🏛️</span> Faculties <span style="font-size:0.7rem;">▾</span>
+                        </a>
+                        <div class="dropdown-menu" id="navbar-faculties-dropdown">
+                            <!-- Populated dynamically via JS: CSIT, BBA, BICTE, LLB -->
+                        </div>
+                    </li>
+
+                    <!-- Self Upload Studio (Placed between Faculty and About!) -->
+                    <li class="nav-item">
+                        <a href="#studio" class="nav-link studio-highlight" data-route="studio">
+                            <span>⚡</span> Self Upload Studio
+                            <span class="nav-badge-ai">AI</span>
+                        </a>
+                    </li>
+
+                    <!-- About -->
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" data-route="about">
+                            <span>ℹ️</span> About
+                        </a>
+                    </li>
+
+                    <!-- Contact -->
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link" data-route="contact">
+                            <span>📞</span> Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right: Search, Theme Toggle, Mobile Menu -->
+            <div class="nav-actions">
+                <button class="search-trigger-btn" id="search-modal-trigger" title="Quick Search (Ctrl + K)">
+                    <span>🔍</span> Search... <span class="kbd-shortcut">Ctrl K</span>
+                </button>
+
+                <a href="#studio" class="btn-icon-nav" title="My Saved Study Vault" style="position: relative;">
+                    <span>📂</span>
+                    <span id="vault-count-badge" class="tab-badge-count" style="position: absolute; top: -4px; right: -4px; background: var(--primary); color: white; display: none;">0</span>
+                </a>
+
+                <button class="btn-icon-nav" id="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
+                    ☰
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs Navigation -->
+    <div class="breadcrumbs-bar" id="breadcrumbs-bar" style="display: none;">
+        <div class="breadcrumbs-container" id="breadcrumbs-container">
+            <!-- Populated via JS -->
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         MAIN CONTENT ROUTER CONTAINERS
+         ====================================================================== -->
+    <main>
+
+        <!-- 1. HOME VIEW -->
+        <section id="view-home" class="page-view active">
+            <!-- Hero -->
+            <div class="hero-section">
+                <div class="hero-pill-badge">
+                    <span class="pulse-dot"></span>
+                    <span>RemNote-Inspired Learning Platform for BMC Students</span>
+                </div>
+                <h1 class="hero-title">
+                    Master Your Syllabus with <span class="highlight-gradient">Active Recall</span>, Smart Notes & AI Tutor
+                </h1>
+                <p class="hero-description">
+                    Empowering students of Butwal Multiple Campus across CSIT, BBA, BICTE, and LLB.
+                    Review hierarchical notes, drill 3D spaced-repetition flashcards, solve past TU board questions, and get your doubts cleared 24/7.
+                </p>
+                <div class="hero-actions">
+                    <a href="#faculty/csit" class="btn-primary-glow">
+                        <span>🚀</span> Explore Courses by Faculty
+                    </a>
+                    <a href="#studio" class="btn-secondary-outline">
+                        <span>✨</span> Open Self Upload Studio
+                    </a>
+                </div>
+
+                <!-- Live Metrics -->
+                <div class="hero-metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-number">4</div>
+                        <div class="metric-label">Faculties (CSIT, BBA, BICTE, LLB)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">100+</div>
+                        <div class="metric-label">Semester Courses Cataloged</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">1000+</div>
+                        <div class="metric-label">RemNote Bullets & Flashcards</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">24/7</div>
+                        <div class="metric-label">Contextual AI Academic Tutor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculties Showcase -->
+            <div class="container-xl">
+                <div class="section-header">
+                    <span class="section-tag">Academic Disciplines</span>
+                    <h2 class="section-title">Select Your Faculty</h2>
+                    <p class="section-subtitle">
+                        Access official Tribhuvan University curriculum, semester-wise subjects, chapters, notes, and past examination solutions.
+                    </p>
+                </div>
+                <div class="faculty-cards-grid" id="home-faculty-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- 4 Study Pillars (RemNote System) -->
+                <div class="section-header" style="margin-top: 5rem;">
+                    <span class="section-tag">Learning Architecture</span>
+                    <h2 class="section-title">How BMC Academia Accelerates Your Learning</h2>
+                    <p class="section-subtitle">
+                        Built around proven cognitive science principles: active recall, spaced repetition, hierarchical chunking, and AI feedback.
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">📝</div>
+                        <h3 class="feature-box-title">RemNote-Style Outliner</h3>
+                        <p class="feature-box-desc">
+                            Hierarchical bullet notes with collapsible chevrons, key concept tags, and interactive cloze deletions that test your memory on click.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">🗂️</div>
+                        <h3 class="feature-box-title">Spaced Repetition Decks</h3>
+                        <p class="feature-box-desc">
+                            3D flipping flashcards with Anki/RemNote style ratings (Again, Hard, Good, Easy) that optimize long-term memory consolidation for exams.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">📜</div>
+                        <h3 class="feature-box-title">TU Past Exam Solutions</h3>
+                        <p class="feature-box-desc">
+                            Authentic past board questions (TU 2078-2081) with detailed step-by-step verified solutions, mark allocations, and scoring strategies.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">🤖</div>
+                        <h3 class="feature-box-title">In-Context AI Tutor</h3>
+                        <p class="feature-box-desc">
+                            Ask any doubt directly inside any chapter. Get simplified analogies, practice quizzes, and TU scoring tips tailored to that exact course.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Call to action: Self Upload Studio Banner -->
+                <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: var(--radius-xl); padding: 3rem 2rem; text-align: center; margin-bottom: 3rem;">
+                    <span class="studio-badge">✨ Self Upload Studio</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0.75rem 0;">Have Your Own Lecture Slides or YouTube Video?</h2>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto 1.75rem;">
+                        Upload your personal lecture PDFs or paste a YouTube video link. Our AI will automatically transcribe and generate RemNote-style notes, flashcards, and exam questions!
+                    </p>
+                    <a href="#studio" class="btn-primary-glow">
+                        <span>⚡</span> Launch Self Upload Studio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FACULTY VIEW (Semesters Selection) -->
+        <section id="view-faculty" class="page-view">
+            <div class="container-xl">
+                <div style="margin-bottom: 2rem;">
+                    <span id="faculty-view-badge" class="chip-tag primary">Institute of Science and Technology</span>
+                    <h1 id="faculty-view-title" style="font-size: 2.4rem; font-weight: 800; margin: 0.5rem 0;">B.Sc. CSIT</h1>
+                    <p id="faculty-view-desc" style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;"></p>
+                </div>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700;">Choose a Semester</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Select your current semester to browse syllabus courses, notes, and study decks.</p>
+                </div>
+
+                <div class="semesters-grid" id="faculty-semesters-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SEMESTER VIEW (Subjects Selection) -->
+        <section id="view-semester" class="page-view">
+            <div class="container-xl">
+                <div style="margin-bottom: 2rem;">
+                    <h1 id="semester-view-title" style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">Semester I</h1>
+                    <p id="semester-view-sub" style="font-size: 1.05rem; color: var(--text-secondary);"></p>
+                </div>
+
+                <div class="subjects-grid" id="semester-subjects-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SUBJECT VIEW (Chapters Selection) -->
+        <section id="view-subject" class="page-view">
+            <div class="container-xl">
+                <div style="margin-bottom: 2rem;">
+                    <h1 id="subject-view-title" style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">C Programming</h1>
+                    <p id="subject-view-sub" style="font-size: 1.05rem; color: var(--text-secondary);"></p>
+                </div>
+
+                <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.4rem; font-weight: 700;">Syllabus Units & Chapters</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Click any unit to launch the dedicated RemNote Outliner, Flashcard Deck, Past Solutions, and AI Tutor.</p>
+                </div>
+
+                <div class="chapters-list" id="subject-chapters-list">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CHAPTER STUDY WORKSPACE / HUB -->
+        <section id="view-study-hub" class="page-view">
+            <div class="container-xl" style="padding-top: 1.5rem;">
+                <div class="study-hub-wrapper">
+                    <!-- Header -->
+                    <div class="study-hub-header">
+                        <div class="study-hub-title-row">
+                            <div>
+                                <h1 class="study-hub-chapter-title" id="hub-chapter-title">Chapter Title</h1>
+                                <div class="study-hub-meta-chips">
+                                    <span class="chip-tag primary" id="hub-subject-badge">CSC110: C Programming</span>
+                                    <span class="chip-tag" id="hub-faculty-badge">CSIT (Semester I)</span>
+                                    <span class="chip-tag exam" id="hub-weightage-badge">TU Exam: 8-10 Marks</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn-secondary-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="window.print()">
+                                    <span>🖨️</span> Print / Export Notes
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 4 Study Tabs -->
+                        <div class="study-tabs-nav">
+                            <button class="study-tab-btn active" data-tab="notes" onclick="window.switchStudyTab('notes')">
+                                <span>📝</span> RemNote Outliner
+                            </button>
+                            <button class="study-tab-btn" data-tab="flashcards" onclick="window.switchStudyTab('flashcards')">
+                                <span>🗂️</span> Spaced Flashcards
+                                <span class="tab-badge-count" id="tab-fc-count">5</span>
+                            </button>
+                            <button class="study-tab-btn" data-tab="past-questions" onclick="window.switchStudyTab('past-questions')">
+                                <span>📜</span> TU Past Questions & Solutions
+                            </button>
+                            <button class="study-tab-btn" data-tab="ai-tutor" onclick="window.switchStudyTab('ai-tutor')">
+                                <span>🤖</span> AI Chapter Tutor
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 1: RemNote Outliner -->
+                    <div class="study-tab-panel active" id="panel-notes">
+                        <div class="outliner-container" id="notes-outliner-mount">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: 3D Flashcards -->
+                    <div class="study-tab-panel" id="panel-flashcards">
+                        <div class="flashcards-workspace">
+                            <!-- Stats & Progress -->
+                            <div class="fc-stats-bar">
+                                <span id="fc-counter-badge" style="font-weight: 600;">Card 1 of 5</span>
+                                <span id="fc-streak-badge" style="font-weight: 600; color: var(--accent-amber);">🔥 Streak: 0</span>
+                            </div>
+                            <div class="fc-progress-track">
+                                <div class="fc-progress-fill" id="fc-progress-fill" style="width: 20%;"></div>
+                            </div>
+
+                            <!-- 3D Card Scene -->
+                            <div class="fc-3d-scene" onclick="window.flipActiveCard()">
+                                <div class="fc-card-flipper" id="fc-card-flipper">
+                                    <!-- Front Face -->
+                                    <div class="fc-face fc-face-front">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span class="fc-tag-badge" id="fc-tag-badge">High Yield</span>
+                                            <span style="font-size: 0.8rem; color: var(--text-muted);">💡 Click or Press Space to Flip</span>
+                                        </div>
+                                        <div class="fc-question-text" id="fc-question-text">
+                                            Loading flashcard question...
+                                        </div>
+                                        <div class="fc-hint-footer">
+                                            <span>Active Recall Prompt</span>
+                                            <span>BMC Academia Deck</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Back Face -->
+                                    <div class="fc-face fc-face-back">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span class="chip-tag primary" style="font-size: 0.75rem;">Verified Answer</span>
+                                            <span style="font-size: 0.8rem; color: var(--accent-emerald);">Mastery Verification</span>
+                                        </div>
+                                        <div class="fc-answer-text" id="fc-answer-text">
+                                            Loading answer...
+                                        </div>
+                                        <div class="fc-hint-footer">
+                                            <span>Rate your recall below</span>
+                                            <span>Keys: 1, 2, 3, 4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spaced Repetition Rating Buttons -->
+                            <div class="fc-ratings-dock">
+                                <button class="btn-sr-rating btn-sr-again" onclick="window.rateActiveCard('again')" title="Short Interval (Repeat today)">
+                                    <span>Repeat (1)</span>
+                                    <span class="btn-sr-interval">Again &lt; 10m</span>
+                                </button>
+                                <button class="btn-sr-rating btn-sr-hard" onclick="window.rateActiveCard('hard')" title="Review in 1-2 days">
+                                    <span>Hard (2)</span>
+                                    <span class="btn-sr-interval">1 Day</span>
+                                </button>
+                                <button class="btn-sr-rating btn-sr-good" onclick="window.rateActiveCard('good')" title="Good retention">
+                                    <span>Good (3)</span>
+                                    <span class="btn-sr-interval">4 Days</span>
+                                </button>
+                                <button class="btn-sr-rating btn-sr-easy" onclick="window.rateActiveCard('easy')" title="Fully mastered">
+                                    <span>Easy (4)</span>
+                                    <span class="btn-sr-interval">7 Days</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Past Questions & Solutions -->
+                    <div class="study-tab-panel" id="panel-past-questions">
+                        <div class="past-questions-container" id="past-questions-mount">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: AI Academic Tutor -->
+                    <div class="study-tab-panel" id="panel-ai-tutor">
+                        <div class="ai-tutor-container">
+                            <div class="ai-tutor-header">
+                                <div class="ai-tutor-title-box">
+                                    <div class="ai-avatar">🤖</div>
+                                    <div>
+                                        <div class="ai-name">BMC Academic AI Tutor</div>
+                                        <div class="ai-status">Active • Tuned to TU Syllabus</div>
+                                    </div>
+                                </div>
+                                <button class="search-trigger-btn" style="font-size: 0.75rem;" onclick="document.getElementById('ai-chat-mount').innerHTML=''">
+                                    Clear Chat
+                                </button>
+                            </div>
+
+                            <!-- Chat Messages Mount -->
+                            <div class="ai-chat-messages" id="ai-chat-mount">
+                                <!-- Populated dynamically via JS -->
+                            </div>
+
+                            <!-- Suggested Prompt Chips -->
+                            <div class="ai-preset-chips" id="ai-preset-chips-mount">
+                                <!-- Populated dynamically via JS -->
+                            </div>
+
+                            <!-- Input Dock -->
+                            <div class="ai-input-dock">
+                                <input type="text" class="ai-text-input" id="ai-user-query" placeholder="Ask your academic doubt or request an explanation..." onkeydown="if(event.key==='Enter') window.askAiTutor();">
+                                <button class="ai-send-btn" onclick="window.askAiTutor()" title="Send Question">
+                                    ➤
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SELF UPLOAD STUDIO (Dedicated Page between Faculty & About) -->
+        <section id="view-studio" class="page-view">
+            <div class="container-xl">
+                <div class="studio-wrapper">
+                    <div class="studio-header">
+                        <span class="studio-badge">✨ Multi-Modal AI Learning Hub</span>
+                        <h1 class="studio-title">BMC Self Upload Studio</h1>
+                        <p class="studio-subtitle">
+                            Upload your lecture slides, handwritten notes, textbook PDFs, or paste YouTube video lectures.
+                            Our AI will transcribe and transform them into RemNote hierarchical outlines, active recall flashcards, and TU exam practice questions.
+                        </p>
+                    </div>
+
+                    <!-- Upload Input Card -->
+                    <div class="studio-input-card">
+                        <!-- Mode Selector -->
+                        <div class="studio-type-selector">
+                            <button class="studio-mode-btn active" data-mode="file" onclick="window.switchStudioInputMode('file')">
+                                <span>📄</span> Upload PDF / File
+                            </button>
+                            <button class="studio-mode-btn" data-mode="video" onclick="window.switchStudioInputMode('video')">
+                                <span>🎥</span> YouTube / Video Link
+                            </button>
+                            <button class="studio-mode-btn" data-mode="text" onclick="window.switchStudioInputMode('text')">
+                                <span>✍️</span> Paste Lecture Notes
+                            </button>
+                        </div>
+
+                        <!-- Mode 1: File Dropzone -->
+                        <div id="studio-input-file">
+                            <div class="upload-dropzone" onclick="document.getElementById('studio-file-elem').click();">
+                                <input type="file" id="studio-file-elem" style="display:none;" accept=".pdf,.doc,.docx,.txt,.png,.jpg" onchange="document.getElementById('file-chosen-name').textContent = this.files[0] ? this.files[0].name : '';">
+                                <div class="dropzone-icon">📁</div>
+                                <h3 class="dropzone-title">Click to upload or drag & drop lecture files</h3>
+                                <p class="dropzone-sub">Supports PDF, DOCX, TXT, or scanned notes (Max 25MB)</p>
+                                <span class="chip-tag primary" id="file-chosen-name" style="font-size:0.85rem;">Ready to Upload</span>
+                            </div>
+                        </div>
+
+                        <!-- Mode 2: YouTube / Video URL -->
+                        <div id="studio-input-video" style="display:none;">
+                            <div class="input-url-box">
+                                <label class="form-label" style="font-weight: 600;">YouTube Lecture or Online Video URL</label>
+                                <input type="url" class="input-url-field" id="studio-yt-url" placeholder="https://www.youtube.com/watch?v=... or lecture stream link">
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">
+                                    💡 BMC AI will transcribe the audio track, extract key academic definitions, and generate study cards.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Mode 3: Raw Text -->
+                        <div id="studio-input-text" style="display:none;">
+                            <div class="input-url-box">
+                                <label class="form-label" style="font-weight: 600;">Paste Lecture Transcript or Study Notes</label>
+                                <textarea class="input-url-field" id="studio-raw-text" rows="6" placeholder="Paste your lecture notes, professor's summary, or textbook chapter here..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn-primary-glow" onclick="window.triggerAiProcessing()">
+                                <span>⚡</span> Generate RemNote Notes & Flashcards with AI
+                            </button>
+                        </div>
+
+                        <!-- AI Processing Pipeline Simulation -->
+                        <div class="ai-processing-box" id="studio-processing-box">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="font-weight: 700;">AI Ingestion Pipeline Active...</h4>
+                                <div class="pipeline-spinner"></div>
+                            </div>
+                            <div class="pipeline-steps">
+                                <div class="pipeline-step-item active" id="pipe-step-1">
+                                    <span>⏳</span> Extracting text tokens and optical symbols...
+                                </div>
+                                <div class="pipeline-step-item" id="pipe-step-2">
+                                    <span>⏳</span> Analyzing semantic key concepts & curriculum mappings...
+                                </div>
+                                <div class="pipeline-step-item" id="pipe-step-3">
+                                    <span>⏳</span> Structuring RemNote hierarchical bullet outline...
+                                </div>
+                                <div class="pipeline-step-item" id="pipe-step-4">
+                                    <span>⏳</span> Synthesizing spaced-repetition cards & exam questions...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Generated Results Box -->
+                    <div id="studio-results-box" style="display:none; margin-bottom: 3.5rem;">
+                        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; box-shadow: var(--shadow-xl);">
+                            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <span class="chip-tag primary">Generated Notebook</span>
+                                    <h2 id="studio-result-title" style="font-size: 1.8rem; font-weight: 800; margin-top: 0.35rem;">Lecture Document</h2>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span class="chip-tag" style="background: var(--accent-emerald); color: white;">💾 Saved to Local Vault</span>
+                                </div>
+                            </div>
+
+                            <!-- Generated RemNote Outline -->
+                            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">📝 Generated RemNote Hierarchical Outline</h3>
+                            <div class="outliner-root" style="margin-bottom: 2.5rem;">
+                                <div class="rem-bullet-node">
+                                    <div class="rem-bullet-row">
+                                        <div class="rem-bullet-dot"></div>
+                                        <div class="rem-bullet-content">
+                                            <strong>Core Conceptual Synthesis:</strong> Primary theorems, definitions, and operational structures.
+                                        </div>
+                                    </div>
+                                    <div class="rem-children-tree">
+                                        <div class="rem-child-row">
+                                            <div class="rem-child-dot"></div>
+                                            <div>Identified fundamental classification criteria and procedural stages.</div>
+                                        </div>
+                                        <div class="rem-child-row">
+                                            <div class="rem-child-dot"></div>
+                                            <div>Highlighted primary edge-cases and critical examination formulas.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rem-bullet-node">
+                                    <div class="rem-bullet-row">
+                                        <div class="rem-bullet-dot"></div>
+                                        <div class="rem-bullet-content">
+                                            <strong>Applied Domain Insights:</strong> Practical scenarios and contextual comparisons in Nepal.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Generated Flashcards Preview -->
+                            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">🗂️ Auto-Generated Active Recall Cards (5 Cards)</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                                <div style="background: var(--bg-muted); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                                    <span class="chip-tag primary" style="font-size: 0.7rem;">Card #1</span>
+                                    <p style="font-weight: 600; margin: 0.5rem 0;">What is the primary thesis of the uploaded study document?</p>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Focuses on systematic workflow and core analytical principles.</p>
+                                </div>
+                                <div style="background: var(--bg-muted); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                                    <span class="chip-tag primary" style="font-size: 0.7rem;">Card #2</span>
+                                    <p style="font-weight: 600; margin: 0.5rem 0;">Which key variables govern optimization in this unit?</p>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Input resource efficiency and regulatory alignment.</p>
+                                </div>
+                            </div>
+
+                            <div style="text-align: center;">
+                                <a href="#faculty/csit" class="btn-primary-glow">
+                                    <span>📚</span> Browse More Campus Courses
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Notebooks Vault Section -->
+                    <div class="saved-vault-section">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700;">My Personal Study Vault</h3>
+                                <p style="font-size: 0.88rem; color: var(--text-muted);">Saved custom lecture decks and transcripts stored in your browser.</p>
+                            </div>
+                        </div>
+                        <div class="vault-cards-grid" id="studio-saved-vault-mount">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. ABOUT VIEW (Official Information from bumc.tu.edu.np) -->
+        <section id="view-about" class="page-view">
+            <div class="container-xl">
+                <div class="about-hero-card">
+                    <span class="chip-tag primary" style="margin-bottom: 0.75rem;">Tribhuvan University Constituent Campus</span>
+                    <h1 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 1rem;">About Butwal Multiple Campus (BMC)</h1>
+                    <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6; max-width: 900px; margin-bottom: 2rem;">
+                        <strong>Butwal Multiple Campus (BUMC)</strong>, established in Butwal, Rupandehi, Lumbini Province, is one of the premier and historic constituent campuses of Tribhuvan University.
+                        Dedicated to academic excellence, innovative pedagogy, and societal development, BMC serves thousands of students across Science, Management, Education, and Law.
+                    </p>
+
+                    <div class="about-grid-2col">
+                        <div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem;">Quality & Institutional Stature</h3>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary); font-size: 0.95rem;">
+                                <li>🏆 <strong>QAA Accredited:</strong> Quality Assurance and Accreditation certified constituent institution of Tribhuvan University.</li>
+                                <li>🔬 <strong>Research Management Cell (RMC):</strong> Active faculty and scholar research cell publishing peer-reviewed e-journals and academic studies.</li>
+                                <li>📚 <strong>Comprehensive Campus Library:</strong> Rich repository of physical references, TU thesis archives, and digital e-resources.</li>
+                                <li>🌐 <strong>Modern Digital Infrastructure:</strong> High-speed optical campus networking, smart classrooms, and state-of-the-art computer laboratories.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src="https://portal.tu.edu.np/medias/bmc_2025_01_20_15_28_29.jpg" alt="Butwal Multiple Campus" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); object-fit: cover; max-height: 280px;" onerror="this.src='https://bumc.tu.edu.np/assets/logo.png'">
+                        </div>
+                    </div>
+
+                    <!-- Campus Chief Section -->
+                    <div class="campus-chief-card">
+                        <img src="https://portal.tu.edu.np/medias/chiefsir_2025_03_18_16_23_50.jpg" alt="Dr. Arun Kumar Kshetree" class="chief-img" onerror="this.src='https://bumc.tu.edu.np/assets/logo.png'">
+                        <div>
+                            <span class="chip-tag" style="font-size: 0.75rem; margin-bottom: 0.35rem;">Campus Leadership</span>
+                            <h3 style="font-size: 1.3rem; font-weight: 700;">Dr. Arun Kumar Kshetree</h3>
+                            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">Campus Chief, Butwal Multiple Campus</p>
+                            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5; font-style: italic;">
+                                "We welcome all prospective students, colleagues, and guardians to this renowned source of knowledge and academic resources.
+                                BMC continues to foster an empowering academic ecosystem where innovation, critical inquiry, and character building flourish."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Faculties Overview -->
+                <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                    <h2 style="font-size: 1.8rem; font-weight: 800;">Academic Institutes & Faculties at BMC</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">💻</div>
+                        <h3 class="feature-box-title">Institute of Science & Technology</h3>
+                        <p class="feature-box-desc">Offering B.Sc. CSIT, B.Sc. General, and advanced computing programs with modernized hardware and software laboratories.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">📊</div>
+                        <h3 class="feature-box-title">Faculty of Management</h3>
+                        <p class="feature-box-desc">Running BBA, BBS, and MBS programs preparing future financial analysts, corporate managers, and entrepreneurs.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">🎓</div>
+                        <h3 class="feature-box-title">Faculty of Education</h3>
+                        <p class="feature-box-desc">Offering BICTE, B.Ed., M.Ed., and PGDE empowering digitally-fluent educational technologists and secondary school leaders.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-wrapper">⚖️</div>
+                        <h3 class="feature-box-title">Faculty of Law</h3>
+                        <p class="feature-box-desc">Conducting LLB and BALLB programs producing advocates, legal scholars, and judicial officers with clinical legal education moot courts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CONTACT VIEW (Official Details from bumc.tu.edu.np) -->
+        <section id="view-contact" class="page-view">
+            <div class="container-xl">
+                <div class="section-header">
+                    <span class="section-tag">Reach Out</span>
+                    <h1 class="section-title">Contact Butwal Multiple Campus</h1>
+                    <p class="section-subtitle">
+                        Have academic queries regarding admissions, semester exams, or need technical assistance with BMC Academia? Get in touch with campus administration.
+                    </p>
+                </div>
+
+                <div class="contact-layout-grid">
+                    <!-- Left: Campus Details -->
+                    <div class="contact-info-card">
+                        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem;">Campus Information</h3>
+
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-bubble">📍</div>
+                            <div>
+                                <h4 style="font-size: 1rem; font-weight: 700;">Location & Address</h4>
+                                <p style="font-size: 0.92rem; color: var(--text-secondary);">Butwal, Rupandehi, Lumbini Province, Nepal</p>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Tribhuvan University Constituent Campus</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-bubble">📞</div>
+                            <div>
+                                <h4 style="font-size: 1rem; font-weight: 700;">Telephone & Office Phone</h4>
+                                <p style="font-size: 0.92rem; color: var(--text-secondary);"><strong>071-530134</strong></p>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Sunday - Friday (6:00 AM - 5:00 PM)</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-bubble">✉️</div>
+                            <div>
+                                <h4 style="font-size: 1rem; font-weight: 700;">Official Email</h4>
+                                <p style="font-size: 0.92rem; color: var(--primary);"><strong>info@bumc.tu.edu.np</strong></p>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Web: <a href="https://bumc.tu.edu.np" target="_blank" style="text-decoration: underline;">bumc.tu.edu.np</a></span>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-row">
+                            <div class="contact-icon-bubble">👤</div>
+                            <div>
+                                <h4 style="font-size: 1rem; font-weight: 700;">Information Officer</h4>
+                                <p style="font-size: 0.92rem; color: var(--text-secondary);"><strong>Mr. Vijay Sapkota</strong></p>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Mobile: 9857030648 • Email: vijay.sapkota@bumc.tu.edu.np</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Inquiry Form -->
+                    <div class="contact-form-card">
+                        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Send Us a Message</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                            Direct message to BMC administration & academic support.
+                        </p>
+
+                        <div id="contact-success-msg" style="display:none; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-emerald); color: var(--accent-emerald); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600;">
+                            ✅ Thank you! Your message has been transmitted to Butwal Multiple Campus academic office.
+                        </div>
+
+                        <form onsubmit="window.handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" required placeholder="Your full name (e.g. Suman Bhattarai)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-input" required placeholder="student@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Faculty / Program</label>
+                                <select class="form-input">
+                                    <option>B.Sc. CSIT (Computer Science & IT)</option>
+                                    <option>BBA (Business Administration)</option>
+                                    <option>BICTE (ICT Education)</option>
+                                    <option>LLB (Bachelor of Laws)</option>
+                                    <option>General Campus Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message / Query *</label>
+                                <textarea class="form-input" rows="4" required placeholder="Describe your question regarding syllabus, notes, or campus facilities..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary-glow" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                                <span>📤</span> Submit Inquiry
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================
+         FOOTER
+         ====================================================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <div class="brand-wrapper" style="margin-bottom: 1rem;">
+                    <img src="https://bumc.tu.edu.np/assets/logo.png" alt="BMC Logo" class="brand-logo-img">
+                    <div class="brand-text">
+                        <span class="brand-title">BMC Academia</span>
+                        <span class="brand-sub">Tribhuvan University</span>
+                    </div>
+                </div>
+                <p class="footer-brand-desc">
+                    Smart learning & academic efficiency portal for students of Butwal Multiple Campus.
+                    Equipping future computer scientists, managers, educators, and jurists with RemNote-style active recall.
+                </p>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">
+                    📍 Butwal, Rupandehi, Nepal • 📞 071-530134
+                </div>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Faculties</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#faculty/csit">B.Sc. CSIT (8 Semesters)</a></li>
+                    <li><a href="#faculty/bba">BBA (8 Semesters)</a></li>
+                    <li><a href="#faculty/bicte">BICTE (8 Semesters)</a></li>
+                    <li><a href="#faculty/llb">LLB (5 Semesters)</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Platform Features</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#studio">Self Upload Studio (AI)</a></li>
+                    <li><a href="#faculty/csit">RemNote Outliner Notes</a></li>
+                    <li><a href="#faculty/csit">Spaced Repetition Decks</a></li>
+                    <li><a href="#faculty/csit">TU Past Exam Solutions</a></li>
+                    <li><a href="#faculty/csit">24/7 AI Academic Tutor</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Official TU Links</h4>
+                <ul class="footer-links-list">
+                    <li><a href="https://bumc.tu.edu.np" target="_blank">Official Campus Portal</a></li>
+                    <li><a href="https://iost.tu.edu.np" target="_blank">TU IOST Dean Office</a></li>
+                    <li><a href="https://tuexam.edu.np" target="_blank">TU Examination Controller</a></li>
+                    <li><a href="https://ugcnepal.edu.np" target="_blank">University Grants Commission (UGC)</a></li>
+                    <li><a href="#contact">Campus Contact & Directory</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <span>© 2026 BMC Academia • Butwal Multiple Campus, Tribhuvan University. All rights reserved.</span>
+            <span>RemNote-Inspired Learning System for Academic Excellence.</span>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         GLOBAL SEARCH MODAL (Ctrl + K)
+         ====================================================================== -->
+    <div class="modal-backdrop" id="search-modal">
+        <div class="modal-box">
+            <div class="search-input-header">
+                <span style="font-size: 1.25rem;">🔍</span>
+                <input type="text" class="search-modal-field" id="global-search-field" placeholder="Search any course, subject code, or chapter (e.g. C Programming, CSC110, Law)...">
+                <button class="kbd-shortcut" id="search-close-btn" style="cursor: pointer;">ESC</button>
+            </div>
+            <div class="search-results-list" id="search-results-mount">
+                <!-- Search matches listed dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/syllabus-data.js"></script>
+    <script src="js/study-content.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

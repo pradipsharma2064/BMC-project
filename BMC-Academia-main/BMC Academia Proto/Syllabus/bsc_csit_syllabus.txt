@@ -1,0 +1,65 @@
+B.Sc. CSIT (Computer Science and Information Technology)
+
+SEMESTER 1
+Code		Subject
+CSC110		C Programming
+CSC111		Digital Logic
+CSC109		Introduction to Information Technology
+MTH112		Mathematics I
+PHY113		Physics
+
+SEMESTER 2
+Code		Subject
+CSC160		Discrete Structure
+MTH163		Mathematics II
+CSC162		Microprocessor
+CSC161		Object Oriented Programming
+STA164		Statistics I
+
+SEMESTER 3
+Code		Subject
+CSC208		Computer Architecture
+CSC209		Computer Graphics
+CSC206		Data Structure and Algorithm
+CSC207		Numerical Method
+STA210		Statistics II
+
+SEMESTER 4
+Code		Subject
+CSC261		Artificial Intelligence
+CSC258		Computer Networks
+CSC260		Database Management System
+CSC259		Operating System
+CSC257		Theory of Computation
+
+SEMESTER 5
+Code		Subject
+CSC316		Cryptography
+CSC314		Design and Analysis of Algorithm
+N/A		Elective I
+CSC317		Simulation and Modeling
+CSC315		System Analysis and Design
+CSC318		Web Technology
+
+SEMESTER 6
+Code		Subject
+CSC365		Computer Design and Construction
+CSC366		E-Governance
+N/A		Elective II
+CSC367		NET Centric Computing
+CSC364		Software Engineering
+CSC368		Technical Writing
+
+SEMESTER 7
+Code		Subject
+CSC409		Advanced Java Programming
+CSC410		Data Warehousing and Data Mining
+N/A		Elective III
+MGT411		Principles of Management
+CSC412		Project Work
+
+SEMESTER 8
+Code		Subject
+CSC461		Advanced Database
+N/A		Elective IV
+CSC462		Internship

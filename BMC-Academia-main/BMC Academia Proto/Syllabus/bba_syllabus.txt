@@ -1,0 +1,61 @@
+BBA (Bachelor of Business Administration)
+
+SEMESTER 1
+Code		Subject
+MTH201		Business Mathematics I
+ITC201		Computer and Information Technology Application
+ENG201		English I
+ECO201		Microeconomics
+MGT201		Principles of Management
+
+SEMESTER 2
+Code		Subject
+MTH202		Business Mathematics II
+ENG202		English II
+MGT202		Human Resource Management
+IT202		Introductory Database
+ECO202		Macro Economics
+
+SEMESTER 3
+Code		Subject
+ENG203		Business Communication
+FIN201		Business Finance
+STT201		Business Statistics
+ACC201		Financial Accounting
+ITC203		Management Information System
+
+SEMESTER 4
+Code		Subject
+PSY201		Basic Psychology
+MGT206		Business Environment in Nepal
+MGT204		Business Law
+ACC202		Cost and Management Accounting
+MKT201		Fundamentals of Marketing
+
+SEMESTER 5
+Code		Subject
+FIN202		Basic Financial Management
+ACC203		Corporate Taxation in Nepal
+MGT207		International Business
+MGT205		Operation Management
+SOC201		Sociology for Business
+
+SEMESTER 6
+Code		Subject
+RCH201		Business Research Methods
+ITC206		E-Commerce
+MGT210		Entrepreneurship
+SOC202		Nepalese Society and Politics
+MGT203		Organizational Behavior
+
+SEMESTER 7
+Code		Subject
+MGT209		Business Ethics and Social Responsibility
+Elective	Specialization Course I
+PRJ350		Summer Project
+
+SEMESTER 8
+Code		Subject
+MGT208		Business Strategy
+MGT350		Internship
+Elective	Specialization Course II

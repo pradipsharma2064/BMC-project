@@ -1,0 +1,71 @@
+BICTE (Bachelor of Information Communication Technology Education)
+
+SEMESTER 1
+Code		Subject
+Ed. 411		Fundamental of Education
+ICT Ed. 415	Introduction to Information Technology
+ICT Ed. 416	Programming Concept with C
+Eng. Ed. 411	English Language-I
+ने. शि. ४११	साधारण नेपाली-१
+Math Ed. 416	Mathematics-I
+
+SEMESTER 2
+Code		Subject
+Ed. 422		Developmental Psychology
+ICT Ed. 425	Digital Logics
+ICT Ed. 426	Object Oriented Programming with C++
+Eng. Ed. 421	English Language-II
+ने. शि. ४२१	साधारण नेपाली-२
+Math Ed. 426	Mathematics-II
+
+SEMESTER 3
+Code		Subject
+Ed. 432		Learning Psychology
+ICT Ed. 438	21st Century Skills
+ICT Ed. 439	Computer Architecture and Organization
+ICT Ed. 435	Data Structure and Algorithm
+ICT Ed. 437	Web Technology
+Math Ed. 436	Probability and Statistics
+
+SEMESTER 4
+Code		Subject
+Ed. 442		Fundamentals of Curriculum
+ICT Ed. 444	Educational Leadership in Digital Era
+ICT Ed. 447	System Analysis and Design
+ICT Ed. 445	Operating System
+ICT Ed. 446	Database Management System
+Math Ed. 442	Numerical Analysis
+
+SEMESTER 5
+Code		Subject
+Ed. 452		Assessment and Evaluation
+ICT Ed. 455	Java Programming
+ICT Ed. 456	Data Communication and Network
+ICT Ed. 457	Software Engineering and Project Management
+Math Ed. 452	Discrete Math
+
+SEMESTER 6
+Code		Subject
+Ed. 462		Research Methods in Education
+ICT Ed. 465	Visual Programming with C#
+ICT Ed. 466	Computer Graphics
+ICT Ed. 467	Digital Pedagogy and LMS
+ICT Ed. 468	Network and Information Security
+
+SEMESTER 7
+Code		Subject
+Ed. 472		Research Project
+ICT Ed. 477	Python Programming
+ICT Ed. 478	Teaching Method in ICT
+ICT Ed. 473	Geographical Information System (GIS)
+ICT Ed. 474	Multimedia
+ICT Ed. 479	Capstone Project
+
+SEMESTER 8
+Code		Subject
+ICT Ed. 482	Artificial Intelligence in Education
+ICT Ed. 486	System Administration using Linux
+Ed 481		Classroom Pedagogy
+ICT Ed. 484	Big Data and Data Analysis
+ICT Ed. 483	Cloud Computing
+ICT Ed. 487	Teaching Practicum in ICT in Education
